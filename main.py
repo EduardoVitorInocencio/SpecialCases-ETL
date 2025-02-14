@@ -93,8 +93,10 @@ df_special_cases = df_special_cases.merge(
 )
 
 df_special_cases_with_pd  = df_special_cases[df_special_cases['Number'].isnull() == False]
-df_special_cases = df_special_cases[df_special_cases['Number'].isna() == True]
+df_special_cases_with_pd = df_special_cases_with_pd.loc[:, ['contract','new_date','C+B']]
 
+df_special_cases = df_special_cases[df_special_cases['Number'].isna() == True]
+df_special_cases = df_special_cases.loc[:, ['contract','new_date','C+B']]
 
 df_special_cases.to_excel(FINAL_PATH_SPECIAL, sheet_name='data', index=False)
 df_special_cases_with_pd.to_excel(FINAL_PATH_MANUAL, sheet_name='data', index=False)
